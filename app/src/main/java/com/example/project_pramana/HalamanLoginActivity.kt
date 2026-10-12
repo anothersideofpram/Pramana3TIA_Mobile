@@ -2,9 +2,8 @@ package com.example.project_pramana
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,6 +14,7 @@ class HalamanLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         binding = ActivityHalamanLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -22,18 +22,34 @@ class HalamanLoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+        val isLogin = sharedPref.getBoolean("isLogin", false)
+        if (isLogin) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
+
         binding.btnLogin.setOnClickListener {
-            val user = binding.edtUsername.text
-            val pass = binding.edtPassword.text
+            val user = binding.edtUsername.text.toString().trim()
+            val pass = binding.edtPassword.text.toString()
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            intent.putExtra("username", user)
-            intent.putExtra("password", pass)
-            startActivity(intent)
-
-            Log.d("Output", "Username $user Password $pass")
-            Toast.makeText(this, "Username: $user Password: $pass", Toast.LENGTH_LONG).show()
+            if (user.isNotEmpty() && user == pass) {
+                val editor = sharedPref.edit()
+                editor.putBoolean("isLogin", true)
+                editor.putString("username", user)
+                editor.apply()
+                startActivity(Intent(this, HalamanLoginActivity::class.java))
+                finish()
+            } else {
+                AlertDialog.Builder(this)
+                    .setTitle("Login Gagal")
+                    .setMessage("Silahkan coba lagi")
+                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
         }
     }
 }

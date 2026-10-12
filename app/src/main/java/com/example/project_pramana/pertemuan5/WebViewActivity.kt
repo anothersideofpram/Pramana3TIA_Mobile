@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.project_pramana.R
-import com.example.project_pramana.databinding.ActivityLimaBinding
 import com.example.project_pramana.databinding.ActivityWebViewBinding
 
 class WebViewActivity : AppCompatActivity() {
