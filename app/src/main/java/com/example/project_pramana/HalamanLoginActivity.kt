@@ -25,13 +25,6 @@ class HalamanLoginActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        val isLogin = sharedPref.getBoolean("isLogin", false)
-        if (isLogin) {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-            return
-        }
-
         binding.btnLogin.setOnClickListener {
             val user = binding.edtUsername.text.toString().trim()
             val pass = binding.edtPassword.text.toString()
@@ -41,13 +34,17 @@ class HalamanLoginActivity : AppCompatActivity() {
                 editor.putBoolean("isLogin", true)
                 editor.putString("username", user)
                 editor.apply()
-                startActivity(Intent(this, HalamanLoginActivity::class.java))
+                val intent = Intent(this, BaseActivity::class.java)
+                intent.putExtra("Extra_User",user)
+                intent.putExtra("Extra_Pass",pass)
+                startActivity(intent)
                 finish()
             } else {
                 AlertDialog.Builder(this)
                     .setTitle("Login Gagal")
                     .setMessage("Silahkan coba lagi")
-                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss()
+                    }
                     .show()
             }
         }

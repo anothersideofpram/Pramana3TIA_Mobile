@@ -21,9 +21,16 @@ class SplashScreenActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val isLogin = sharedPref.getBoolean("isLogin", false)
+        if (isLogin) {
+            startActivity(Intent(this, BaseActivity::class.java))
+            finish()
+            return
+        }
         lifecycleScope.launch {
             delay(2000)
-            val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
+            val intent = Intent(this@SplashScreenActivity, TutorialScreenActivity::class.java)
             startActivity(intent)
             finish()
         }

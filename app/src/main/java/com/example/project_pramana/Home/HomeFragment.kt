@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.project_pramana.HalamanLoginActivity
 import com.example.project_pramana.Home.pertemuan5.LimaActivity
 import com.example.project_pramana.Home.pertemuan6.EnamActivity
+import com.example.project_pramana.Home.pertemuan9.NinthActivity
 import com.example.project_pramana.MainActivity
 import com.example.project_pramana.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -35,7 +36,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home Fragment"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home"
 
         val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
         val user = requireActivity().intent.getStringExtra("username")
@@ -84,6 +85,11 @@ class HomeFragment : Fragment() {
         }
         binding.btnP6.setOnClickListener {
             val intent = Intent(requireContext(), EnamActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnP9.setOnClickListener {
+            val intent = Intent(requireContext(), NinthActivity::class.java)
             startActivity(intent)
         }
 
