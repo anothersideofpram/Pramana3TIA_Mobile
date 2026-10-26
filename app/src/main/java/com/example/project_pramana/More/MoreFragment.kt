@@ -16,16 +16,9 @@ import com.example.project_pramana.databinding.FragmentMoreBinding
 
 class MoreFragment : Fragment() {
 
-    private var _binding: FragmentMoreBinding?= null
-    private val binding get() =_binding!!
+    private var _binding: FragmentMoreBinding? = null
+    private val binding get() = _binding!!
 
-//    private val dataList = listOf(
-//        "Kotlin", "Java", "Python", "C++", "JavaScript",
-//        "Dart", "Swift", "Go", "Ruby", "R",
-//        "PHP", "C#", "TypeScript", "Shell", "SQL",
-//        "Perl", "Rust", "Scala", "Haskell", "Lua",
-//        "Erlang", "Prolog", "Assembly", "Objective-C", "VBA"
-//    )
     private val dataListWithDesc = listOf(
         mapOf("title" to "Kotlin", "desc" to "Bahasa untuk Android modern"),
         mapOf("title" to "Java", "desc" to "Bahasa OOP yang populer"),
@@ -37,7 +30,7 @@ class MoreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMoreBinding.inflate(inflater,container,false)
+        _binding = FragmentMoreBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -56,8 +49,10 @@ class MoreFragment : Fragment() {
             val selectedItem = dataListWithDesc[position]
             val title = selectedItem["title"]
             val desc = selectedItem["desc"]
-            Toast.makeText(requireContext(), "Kamu memilih: $title ($desc)",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(), "Kamu memilih: $title ($desc)",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

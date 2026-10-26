@@ -35,23 +35,27 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(HomeFragment())
                     true
                 }
+
                 R.id.message -> {
                     //Toast.makeText(this, "Message Clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(MessageFragment())
                     true
                 }
+
                 R.id.more -> {
                     //Toast.makeText(this, "More Clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(MoreFragment())
                     true
                 }
+
                 else -> false
             }
         }
     }
-    private fun replaceFragment(fragment: Fragment){
+
+    private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id,fragment)
+            .replace(binding.fragmentContainer.id, fragment)
             .commit()
     }
 }

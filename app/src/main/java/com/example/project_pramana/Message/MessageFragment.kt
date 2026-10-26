@@ -12,8 +12,8 @@ import com.example.project_pramana.R
 import com.example.project_pramana.databinding.FragmentMessageBinding
 
 class MessageFragment : Fragment() {
-    private var _binding: FragmentMessageBinding?= null
-    private val binding get() =_binding!!
+    private var _binding: FragmentMessageBinding? = null
+    private val binding get() = _binding!!
 
     private val messageList = listOf(
         MessageModel("Alya", "Halo! Apa kabar?", "https://i.pravatar.cc/150?img=1"),
@@ -32,7 +32,7 @@ class MessageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMessageBinding.inflate(inflater,container,false)
+        _binding = FragmentMessageBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2A7FF"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Home.HomeFragment">
 
     <View
@@ -12,8 +12,8 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:background="@drawable/bg_header_wave"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
@@ -28,12 +28,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:text="Welcome"
-        android:textStyle="bold"
         android:textSize="35sp"
-        app:layout_constraintTop_toBottomOf="@+id/background_header"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/background_header"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -110,16 +110,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:columnCount="1"
-        app:useDefaultMargins="true"
+        app:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:useDefaultMargins="true">
 
         <Button
             android:id="@+id/btnToLima"
@@ -128,7 +129,7 @@
             android:backgroundTint="#C2185B"
             android:text="Pertemuan 5"
             app:layout_columnWeight="1"
-            app:layout_gravity="fill_horizontal"/>
+            app:layout_gravity="fill_horizontal" />
 
         <Button
             android:id="@+id/btnP6"
@@ -137,7 +138,7 @@
             android:backgroundTint="#5B49FF"
             android:text="Pertemuan 6"
             app:layout_columnWeight="1"
-            app:layout_gravity="fill_horizontal"/>
+            app:layout_gravity="fill_horizontal" />
 
         <Button
             android:id="@+id/btnP9"
@@ -146,7 +147,16 @@
             android:backgroundTint="#1100FF"
             android:text="Pertemuan 9"
             app:layout_columnWeight="1"
-            app:layout_gravity="fill_horizontal"/>
+            app:layout_gravity="fill_horizontal" />
+
+        <Button
+            android:id="@+id/btnP10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8177FF"
+            android:text="Pertemuan 10"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal" />
 
     </androidx.gridlayout.widget.GridLayout>
 

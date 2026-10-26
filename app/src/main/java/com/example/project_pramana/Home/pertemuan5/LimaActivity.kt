@@ -36,24 +36,29 @@ class LimaActivity : AppCompatActivity() {
             startActivity(Intent(this, WebViewActivity::class.java))
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
+
             R.id.action_search -> {
                 Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
+
             R.id.action_settings -> {
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

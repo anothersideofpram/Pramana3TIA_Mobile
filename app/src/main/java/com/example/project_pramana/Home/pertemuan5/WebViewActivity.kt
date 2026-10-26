@@ -28,9 +28,9 @@ class WebViewActivity : AppCompatActivity() {
         binding.webView.loadUrl("https://www.callofduty.com/")
         setSupportActionBar(binding.webToolbar)
         supportActionBar?.apply {
-           title = "Call Of Duty"
-           setDisplayHomeAsUpEnabled(true)
-           setDisplayShowHomeEnabled(true)
+            title = "Call Of Duty"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
         binding.webView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
@@ -41,12 +41,14 @@ class WebViewActivity : AppCompatActivity() {
             }
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

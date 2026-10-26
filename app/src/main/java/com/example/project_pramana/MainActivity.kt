@@ -30,26 +30,28 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
         val user = intent.getStringExtra("username")
         val pass = intent.getStringExtra("password")
-        binding.txtUsername.text=user
-        binding.txtPassword.text=pass
+        binding.txtUsername.text = user
+        binding.txtPassword.text = pass
 
         binding.btnSnackbar.setOnClickListener {
-            Snackbar.make(binding.root,"Halo ini Snackbar", Snackbar.LENGTH_LONG)
-                .setAction("Info"){
+            Snackbar.make(binding.root, "Halo ini Snackbar", Snackbar.LENGTH_LONG)
+                .setAction("Info") {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     Toast.makeText(this, "Kembali ke halaman Activity", Toast.LENGTH_LONG).show()
                 }
                 .show()
         }
-        binding.btnAlert.setOnClickListener { MaterialAlertDialogBuilder(this)
-            .setTitle("Hapus data")
-            .setMessage("Data tidak bisa di kembalikan.")
-            .setNegativeButton("Batal", null)
-            .setPositiveButton("Hapus"){dialog, _ ->
-                dialog.dismiss()}
-            .setCancelable(false)
-            .show()
+        binding.btnAlert.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Hapus data")
+                .setMessage("Data tidak bisa di kembalikan.")
+                .setNegativeButton("Batal", null)
+                .setPositiveButton("Hapus") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setCancelable(false)
+                .show()
         }
         binding.btnToLima.setOnClickListener {
             val intent = Intent(this, LimaActivity::class.java)
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     dialog.dismiss()
                     startActivity(Intent(this, HalamanLoginActivity::class.java))
                     finish()
-               }
+                }
                 .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
                 .show()
         }

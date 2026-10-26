@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project_pramana.HalamanLoginActivity
+import com.example.project_pramana.Home.pertemuan10.TenthActivity
 import com.example.project_pramana.Home.pertemuan5.LimaActivity
 import com.example.project_pramana.Home.pertemuan6.EnamActivity
 import com.example.project_pramana.Home.pertemuan9.NinthActivity
@@ -21,16 +22,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding?= null
-    private val binding get() =_binding!!
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-    //return inflater.inflate(R.layout.fragment_home, container, false)
+        //return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,28 +42,33 @@ class HomeFragment : Fragment() {
         val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
         val user = requireActivity().intent.getStringExtra("username")
         val pass = requireActivity().intent.getStringExtra("password")
-        binding.txtUsername.text=user
-        binding.txtPassword.text=pass
-        Log.d("Output","Username: $user Password: $pass")
+        binding.txtUsername.text = user
+        binding.txtPassword.text = pass
+        Log.d("Output", "Username: $user Password: $pass")
 
         binding.btnSnackbar.setOnClickListener {
-            Snackbar.make(binding.root,"Halo ini Snackbar", Snackbar.LENGTH_LONG)
-                .setAction("Info"){
+            Snackbar.make(binding.root, "Halo ini Snackbar", Snackbar.LENGTH_LONG)
+                .setAction("Info") {
                     val intent = Intent(requireContext(), MainActivity::class.java)
                     startActivity(intent)
-                    Toast.makeText(requireContext(), "Kembali ke halaman Activity", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Kembali ke halaman Activity",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
                 .show()
         }
         binding.btnAlert.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Hapus data")
-            .setMessage("Data tidak bisa di kembalikan.")
-            .setNegativeButton("Batal", null)
-            .setPositiveButton("Hapus"){dialog, _ ->
-                dialog.dismiss()}
-            .setCancelable(false)
-            .show()
+                .setTitle("Hapus data")
+                .setMessage("Data tidak bisa di kembalikan.")
+                .setNegativeButton("Batal", null)
+                .setPositiveButton("Hapus") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setCancelable(false)
+                .show()
         }
         binding.btnToLima.setOnClickListener {
             val intent = Intent(requireContext(), LimaActivity::class.java)
@@ -90,6 +96,10 @@ class HomeFragment : Fragment() {
 
         binding.btnP9.setOnClickListener {
             val intent = Intent(requireContext(), NinthActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnP10.setOnClickListener {
+            val intent = Intent(requireContext(), TenthActivity::class.java)
             startActivity(intent)
         }
 

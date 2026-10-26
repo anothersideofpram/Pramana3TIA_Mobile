@@ -35,15 +35,16 @@ class HalamanLoginActivity : AppCompatActivity() {
                 editor.putString("username", user)
                 editor.apply()
                 val intent = Intent(this, BaseActivity::class.java)
-                intent.putExtra("Extra_User",user)
-                intent.putExtra("Extra_Pass",pass)
+                intent.putExtra("Extra_User", user)
+                intent.putExtra("Extra_Pass", pass)
                 startActivity(intent)
                 finish()
             } else {
                 AlertDialog.Builder(this)
                     .setTitle("Login Gagal")
                     .setMessage("Silahkan coba lagi")
-                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss()
+                    .setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
                     }
                     .show()
             }

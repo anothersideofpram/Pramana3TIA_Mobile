@@ -13,11 +13,11 @@ import com.example.project_pramana.databinding.ActivityTutorialScreenBinding
 
 class TutorialScreenActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityTutorialScreenBinding
+    private lateinit var binding: ActivityTutorialScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityTutorialScreenBinding.inflate(layoutInflater                      )
+        binding = ActivityTutorialScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
